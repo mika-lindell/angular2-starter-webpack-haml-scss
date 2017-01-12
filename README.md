@@ -1,7 +1,8 @@
 # Angular 2 template with webpack, haml & scss
 
-install:
-Run with:
+Requires NodeJS & npm.
+
+To install:
 ```
 – npm install
 ```
@@ -15,7 +16,8 @@ Build with:
 ```
 – npm run build
 ```
-When building remember to set *publicPath* to your production root.
+config/webpack.prod.js:
+When building remember to set *publicPath* as relative to your production root folder.
 
 Test with:
 ```
