@@ -11,7 +11,7 @@ module.exports = webpackMerge(commonConfig, {
 
   output: {
     path: helpers.root('dist'),
-    publicPath: '/dev/webpack-angular2/dist/', // This needs to be the path this app is in your prod server - relative to root
+    publicPath: '/dev/webpack-angular2/dist/', // This needs to be the path of this app in your prod server - relative to root
     filename: '[name].[hash].js',
     chunkFilename: '[id].[hash].chunk.js'
   },

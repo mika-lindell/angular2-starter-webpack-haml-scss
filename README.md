@@ -1,4 +1,4 @@
-# Angular 2 template with webpack, haml & scss
+# Angular 2 starter with webpack, haml & scss
 
 Requires NodeJS & npm.
 
