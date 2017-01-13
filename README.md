@@ -10,8 +10,6 @@ To install:
 Run with:
 ```
 – npm start
-
-navigate to 
 ```
 
 Build with:
