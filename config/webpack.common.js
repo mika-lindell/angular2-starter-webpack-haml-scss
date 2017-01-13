@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
 module.exports = {
+  // Entry points for searching files
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
@@ -21,12 +22,28 @@ module.exports = {
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
 
-      { 
-        test: /\.html\.hamlc$/,
-        exclude: helpers.root('node_modules'),
-        loader: "haml" 
+      {
+        test: /\.html$/,
+        loader: 'html'
       },
 
+      { 
+        test: /\.html\.hamlc$/,
+        loaders: ["template-html-loader?engine=haml-coffee"] // https://github.com/jtangelder/template-html-loader
+      },
+      
+      {
+        test: /\.css$/,
+        exclude: helpers.root('src', 'app'),
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
+      },
+      {
+        test: /\.css$/,
+        include: helpers.root('src', 'app'),
+        loader: 'raw'
+      },
+
+      // SASS loader has to be done the same ways as CSS
       {
         test: /\.scss$/,
         exclude: helpers.root('src', 'app'),
@@ -36,28 +53,15 @@ module.exports = {
         test: /\.scss$/,
         include: helpers.root('src', 'app'),
         loader: 'raw'
-      },
+      }
 
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html'
-      // },
+    ],    
 
+    postLoaders: [
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file?name=assets/[name].[hash].[ext]'
-      },
-      
-      // {
-      //   test: /\.css$/,
-      //   exclude: helpers.root('src', 'app'),
-      //   loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
-      // },
-      // {
-      //   test: /\.css$/,
-      //   include: helpers.root('src', 'app'),
-      //   loader: 'raw'
-      // }
+      }
     ]
   },
 
@@ -67,7 +71,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: 'src/index.html.hamlc'
+      template: 'src/index.html.hamlc' // Make sure our generated scripts end up somewhere
     })
   ]
 };
