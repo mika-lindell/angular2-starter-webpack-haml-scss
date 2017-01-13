@@ -10,14 +10,16 @@ To install:
 Run with:
 ```
 – npm start
+
+navigate to 
 ```
 
 Build with:
 ```
 – npm run build
 ```
-config/webpack.prod.js:
-When building remember to set *publicPath* as relative to your production root folder.
+*config/webpack.prod.js:*
+When building remember to set *publicPath* (cdn) as the path or url containing your assets e.g scripts, images & css.
 
 Test with:
 ```
