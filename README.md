@@ -2,6 +2,8 @@
 
 Requires NodeJS & npm.
 
+The dev environment works but building the app doesn't (only if using html&css) — I'm thinking it might be because of the angular 2 loader, which gets assets from components.
+
 To install:
 ```
 – npm install

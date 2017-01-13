@@ -43,7 +43,6 @@ module.exports = {
         loader: 'raw'
       },
 
-      // SASS loader has to be done the same ways as CSS
       {
         test: /\.scss$/,
         exclude: helpers.root('src', 'app'),
