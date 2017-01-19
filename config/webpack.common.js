@@ -23,44 +23,22 @@ module.exports = {
       },
 
       {
-        test: /\.html$/,
-        loader: 'html'
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
       },
 
       { 
-        test: /\.html\.hamlc$/,
+        test: /\.haml$/,
+        exclude: /node_modules/,
         loaders: ["template-html-loader?engine=haml-coffee"] // https://github.com/jtangelder/template-html-loader
       },
-      
-      {
-        test: /\.css$/,
-        exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
-      },
-      {
-        test: /\.css$/,
-        include: helpers.root('src', 'app'),
-        loader: 'raw'
-      },
 
       {
         test: /\.scss$/,
-        exclude: helpers.root('src', 'app'),
-        loaders: ["style-loader", "css-loader", "sass-loader"]
-      },
-      {
-        test: /\.scss$/,
-        include: helpers.root('src', 'app'),
-        loader: 'raw'
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader']
       }
 
-    ],    
-
-    postLoaders: [
-      {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file?name=assets/[name].[hash].[ext]'
-      }
     ]
   },
 
@@ -70,7 +48,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: 'src/index.html.hamlc' // Make sure our generated scripts end up somewhere
+      template: 'src/index.haml' // Make sure our generated scripts end up somewhere
     })
   ]
 };

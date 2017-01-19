@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import '../../public/css/styles.scss';
+import { Component, ViewEncapsulation } from '@angular/core';
+
 @Component({
   selector: 'my-app',
-  templateUrl: './app.component.html.hamlc',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.haml',
+  styleUrls: [
+    String('../global.scss'), 
+    String('./app.component.scss')],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent { }
