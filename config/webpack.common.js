@@ -34,9 +34,9 @@ module.exports = {
       },
 
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader']
+        test: /\.(scss|css)$/,
+        include: helpers.root('src'),
+        loader: ExtractTextPlugin.extract('css!sass') // Styles outside app to file
       }
 
     ]
